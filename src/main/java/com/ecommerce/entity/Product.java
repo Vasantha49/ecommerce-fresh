@@ -83,4 +83,10 @@ public class Product {
     public boolean isInStock(int requested) {
         return getAvailableQuantity() >= requested;
     }
+
+    @PrePersist
+    public void prePersist() {
+        if (reservedQuantity == null) reservedQuantity = 0;
+        if (stockQuantity == null) stockQuantity = 0;
+    }
 }
